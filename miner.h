@@ -24,9 +24,9 @@ using namespace std;
 class Miner_Pool{
     private:
         unsigned long id;
-        unsigned int selfish_hash_power; // alpha
-        unsigned int network_delay; // lamda * delta
-        unsigned int honest_hash_power;
+        double selfish_hash_power; // alpha
+        double network_delay; // lamda * delta
+        double honest_hash_power;
         unsigned int public_chain_length;
         unsigned int private_selfish_chain_length;
         unsigned int private_honest_chain_length;
@@ -35,25 +35,26 @@ class Miner_Pool{
         unsigned int selfish_blocks_num;
         unsigned int total_blocks_num;
 
-        double revenue[SIM_MAX];
-        double revenue_avg;
-        unsigned int sim_id; // max: 1500 (in our case: 1000)
+        double sim_buffer[SIM_MAX];
+        double revenue_avg[HUNDREAD_PERSENT];
+        unsigned int sim_id; // max: 50 (50%)
+
 
         ofstream result_file;
         string result_file_name;
 
     public:
-        Miner_Pool(unsigned long _id, unsigned int _network_delay);
+        Miner_Pool(unsigned long _id, double _network_delay);
         /* Initializes the data structures needed for the miner object 
         * _id is the identity of the miner pool.
         * _network_delay is the network delay that we will take into consideration
         * */
-        void Set_Selfish_Hash_Power(unsigned int _selfish_hash_power);
+        void Set_Selfish_Hash_Power(double _selfish_hash_power);
         /* Method when the miner pool is mining
         * return: fail (1) or not (0)
         * _selfish_hash_power is the % of the hash power the selfish miner owned.
         * */
-        unsigned long On_Mining(int _rewards_to);
+        unsigned long On_Mining(int transactions, int id, int runs);
         /* Method when the miner pool is mining
         * return: fail (1) or not (0)
         * 
@@ -71,7 +72,7 @@ class Miner_Pool{
         /* Methods to fork chain to the longest Chain which will cause the length of 
         * the chain be reset to current longest chain
         * */
-        unsigned long Req_Chain_Len();
+        double Req_Revenue_Avg(int id);
         /* Methods to request the length of the chain
         * 
         * */
