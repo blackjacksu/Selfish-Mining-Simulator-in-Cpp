@@ -96,11 +96,11 @@ int main(int argc, char *argv[])
         while (i < runs)
         {
             miner_pool_sim0.Set_Selfish_Hash_Power(selfish_hash_power * 0.01);
-            miner_pool_sim1.Set_Selfish_Hash_Power(selfish_hash_power * 1.0);
-            miner_pool_sim2.Set_Selfish_Hash_Power(selfish_hash_power * 1.0);
-            miner_pool_sim3.Set_Selfish_Hash_Power(selfish_hash_power * 1.0);
-            miner_pool_sim4.Set_Selfish_Hash_Power(selfish_hash_power * 1.0);
-            miner_pool_sim5.Set_Selfish_Hash_Power(selfish_hash_power * 1.0);
+            miner_pool_sim1.Set_Selfish_Hash_Power(selfish_hash_power * 0.01);
+            miner_pool_sim2.Set_Selfish_Hash_Power(selfish_hash_power * 0.01);
+            miner_pool_sim3.Set_Selfish_Hash_Power(selfish_hash_power * 0.01);
+            miner_pool_sim4.Set_Selfish_Hash_Power(selfish_hash_power * 0.01);
+            miner_pool_sim5.Set_Selfish_Hash_Power(selfish_hash_power * 0.01);
             miner_pool_sim0.On_Mining(NUM_TRANSACTION, selfish_hash_power, i);
             miner_pool_sim1.On_Mining(NUM_TRANSACTION, selfish_hash_power, i);
             miner_pool_sim2.On_Mining(NUM_TRANSACTION, selfish_hash_power, i);
