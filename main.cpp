@@ -67,25 +67,25 @@ int main(int argc, char *argv[])
     // }; 
 
     Miner_Pool miner_pool_sim0(0, lamta[0]);
-    // Miner_Pool miner_pool_sim1(1, lamta[1]);
-    // Miner_Pool miner_pool_sim2(2, lamta[2]);
-    // Miner_Pool miner_pool_sim3(3, lamta[3]);
-    // Miner_Pool miner_pool_sim4(4, lamta[4]);
-    // Miner_Pool miner_pool_sim5(5, lamta[5]);
+    Miner_Pool miner_pool_sim1(1, lamta[1]);
+    Miner_Pool miner_pool_sim2(2, lamta[2]);
+    Miner_Pool miner_pool_sim3(3, lamta[3]);
+    Miner_Pool miner_pool_sim4(4, lamta[4]);
+    Miner_Pool miner_pool_sim5(5, lamta[5]);
 
     double revenue_0[MAX_SELFISH_PERCENTAGE];
-    // double revenue_1[MAX_SELFISH_PERCENTAGE];
-    // double revenue_2[MAX_SELFISH_PERCENTAGE];
-    // double revenue_3[MAX_SELFISH_PERCENTAGE];
-    // double revenue_4[MAX_SELFISH_PERCENTAGE];
-    // double revenue_5[MAX_SELFISH_PERCENTAGE];
+    double revenue_1[MAX_SELFISH_PERCENTAGE];
+    double revenue_2[MAX_SELFISH_PERCENTAGE];
+    double revenue_3[MAX_SELFISH_PERCENTAGE];
+    double revenue_4[MAX_SELFISH_PERCENTAGE];
+    double revenue_5[MAX_SELFISH_PERCENTAGE];
 
     string result_0 = "result_0.txt";
-    // string result_1 = "result_1.txt";
-    // string result_2 = "result_2.txt";
-    // string result_3 = "result_3.txt";
-    // string result_4 = "result_4.txt";
-    // string result_5 = "result_5.txt";
+    string result_1 = "result_1.txt";
+    string result_2 = "result_2.txt";
+    string result_3 = "result_3.txt";
+    string result_4 = "result_4.txt";
+    string result_5 = "result_5.txt";
 
 
 
@@ -96,40 +96,40 @@ int main(int argc, char *argv[])
         while (i < runs)
         {
             miner_pool_sim0.Set_Selfish_Hash_Power(selfish_hash_power * 0.01);
-            // miner_pool_sim1.Set_Selfish_Hash_Power(selfish_hash_power * 1.0);
-            // miner_pool_sim2.Set_Selfish_Hash_Power(selfish_hash_power * 1.0);
-            // miner_pool_sim3.Set_Selfish_Hash_Power(selfish_hash_power * 1.0);
-            // miner_pool_sim4.Set_Selfish_Hash_Power(selfish_hash_power * 1.0);
-            // miner_pool_sim5.Set_Selfish_Hash_Power(selfish_hash_power * 1.0);
+            miner_pool_sim1.Set_Selfish_Hash_Power(selfish_hash_power * 1.0);
+            miner_pool_sim2.Set_Selfish_Hash_Power(selfish_hash_power * 1.0);
+            miner_pool_sim3.Set_Selfish_Hash_Power(selfish_hash_power * 1.0);
+            miner_pool_sim4.Set_Selfish_Hash_Power(selfish_hash_power * 1.0);
+            miner_pool_sim5.Set_Selfish_Hash_Power(selfish_hash_power * 1.0);
             miner_pool_sim0.On_Mining(NUM_TRANSACTION, selfish_hash_power, i);
-            // miner_pool_sim1.On_Mining(NUM_TRANSACTION, selfish_hash_power, runs);
-            // miner_pool_sim2.On_Mining(NUM_TRANSACTION, selfish_hash_power, runs);
-            // miner_pool_sim3.On_Mining(NUM_TRANSACTION, selfish_hash_power, runs);
-            // miner_pool_sim4.On_Mining(NUM_TRANSACTION, selfish_hash_power, runs);
-            // miner_pool_sim5.On_Mining(NUM_TRANSACTION, selfish_hash_power, runs);
+            miner_pool_sim1.On_Mining(NUM_TRANSACTION, selfish_hash_power, i);
+            miner_pool_sim2.On_Mining(NUM_TRANSACTION, selfish_hash_power, i);
+            miner_pool_sim3.On_Mining(NUM_TRANSACTION, selfish_hash_power, i);
+            miner_pool_sim4.On_Mining(NUM_TRANSACTION, selfish_hash_power, i);
+            miner_pool_sim5.On_Mining(NUM_TRANSACTION, selfish_hash_power, i);
 
             miner_pool_sim0.Reset_Data();
-            // miner_pool_sim1.Reset_Data();
-            // miner_pool_sim2.Reset_Data();
-            // miner_pool_sim3.Reset_Data();
-            // miner_pool_sim4.Reset_Data();
-            // miner_pool_sim5.Reset_Data();
+            miner_pool_sim1.Reset_Data();
+            miner_pool_sim2.Reset_Data();
+            miner_pool_sim3.Reset_Data();
+            miner_pool_sim4.Reset_Data();
+            miner_pool_sim5.Reset_Data();
             i++;
         }
 
         revenue_0[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power);
-        // revenue_1[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power);
-        // revenue_2[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power)
-        // revenue_3[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power);
-        // revenue_4[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power);
-        // revenue_5[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power)
+        revenue_1[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power);
+        revenue_2[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power);
+        revenue_3[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power);
+        revenue_4[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power);
+        revenue_5[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power);
 
         save_to_file(result_0, selfish_hash_power, revenue_0[selfish_hash_power]);
-        // save_to_file(result_1, selfish_hash_power, revenue_1[selfish_hash_power]);
-        // save_to_file(result_2, selfish_hash_power, revenue_2[selfish_hash_power]);
-        // save_to_file(result_3, selfish_hash_power, revenue_3[selfish_hash_power]);
-        // save_to_file(result_4, selfish_hash_power, revenue_4[selfish_hash_power]);
-        // save_to_file(result_5, selfish_hash_power, revenue_5[selfish_hash_power]);
+        save_to_file(result_1, selfish_hash_power, revenue_1[selfish_hash_power]);
+        save_to_file(result_2, selfish_hash_power, revenue_2[selfish_hash_power]);
+        save_to_file(result_3, selfish_hash_power, revenue_3[selfish_hash_power]);
+        save_to_file(result_4, selfish_hash_power, revenue_4[selfish_hash_power]);
+        save_to_file(result_5, selfish_hash_power, revenue_5[selfish_hash_power]);
     }
 
     return 0;
