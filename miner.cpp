@@ -91,14 +91,13 @@ unsigned long Miner_Pool::On_Mining(int transactions, int id, int runs)
 
             
     total_blocks_num = selfish_blocks_num + honest_blocks_num;
-    cout << "total_blocks_num: " << total_blocks_num << ", selfish_blocks_num: " << selfish_blocks_num << ", honest_blocks_num: " << honest_blocks_num << ", runs: " << runs << endl;
+    cout << "total_blocks_num: " << total_blocks_num << ", selfish_blocks_num: " << selfish_blocks_num << ", honest_blocks_num: " << honest_blocks_num << ", runs: " << runs << ", network_delay: " << network_delay << endl;
     if (runs < SIM_MAX && total_blocks_num != 0)
     {
         sim_buffer[runs] = 1.0 * selfish_blocks_num / total_blocks_num;
         revenue_avg[sim_id] += (sim_buffer[runs] - revenue_avg[sim_id]) / (runs + 1);
         cout << "revenue_avg[sim_id]: " << revenue_avg[sim_id] << ", sim_id: " << sim_id << endl;
         cout << "sim_buffer[runs]: " << sim_buffer[runs] << ", runs: " << runs << endl;
-
     }
 
     return 0;
@@ -149,8 +148,9 @@ void Miner_Pool::Reset_Data()
 {
     private_selfish_chain_length = 0;
     public_chain_length = 0;
-    selfish_blocks_num = 0;
+
     honest_blocks_num = 0;
+    selfish_blocks_num = 0;
     total_blocks_num = 0;
 
     for (int i = 0; i < SIM_MAX; i++)

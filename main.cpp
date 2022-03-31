@@ -101,6 +101,7 @@ int main(int argc, char *argv[])
             miner_pool_sim3.Set_Selfish_Hash_Power(selfish_hash_power * 0.01);
             miner_pool_sim4.Set_Selfish_Hash_Power(selfish_hash_power * 0.01);
             miner_pool_sim5.Set_Selfish_Hash_Power(selfish_hash_power * 0.01);
+            
             miner_pool_sim0.On_Mining(NUM_TRANSACTION, selfish_hash_power, i);
             miner_pool_sim1.On_Mining(NUM_TRANSACTION, selfish_hash_power, i);
             miner_pool_sim2.On_Mining(NUM_TRANSACTION, selfish_hash_power, i);
@@ -118,11 +119,11 @@ int main(int argc, char *argv[])
         }
 
         revenue_0[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power);
-        revenue_1[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power);
-        revenue_2[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power);
-        revenue_3[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power);
-        revenue_4[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power);
-        revenue_5[selfish_hash_power] = miner_pool_sim0.Req_Revenue_Avg(selfish_hash_power);
+        revenue_1[selfish_hash_power] = miner_pool_sim1.Req_Revenue_Avg(selfish_hash_power);
+        revenue_2[selfish_hash_power] = miner_pool_sim2.Req_Revenue_Avg(selfish_hash_power);
+        revenue_3[selfish_hash_power] = miner_pool_sim3.Req_Revenue_Avg(selfish_hash_power);
+        revenue_4[selfish_hash_power] = miner_pool_sim4.Req_Revenue_Avg(selfish_hash_power);
+        revenue_5[selfish_hash_power] = miner_pool_sim5.Req_Revenue_Avg(selfish_hash_power);
 
         save_to_file(result_0, selfish_hash_power, revenue_0[selfish_hash_power]);
         save_to_file(result_1, selfish_hash_power, revenue_1[selfish_hash_power]);
